@@ -65,8 +65,9 @@
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
-    <Reference Include="XArchiveDragon">
-      <HintPath>..\..\..\..\Downloads\XArchiveDragon.dll</HintPath>
+    <Reference Include="XArchiveDragon, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>.\XArchiveDragon.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
