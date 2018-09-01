@@ -1,4 +1,5 @@
 # SAMP Launcher by pasvitas v2.0
+[![Build Status](https://travis-ci.org/pasvitas/samplauncher.svg?branch=master)](https://travis-ci.org/pasvitas/samplauncher)
 Лаунчер для SAMP-серверов by pasvitas
 Версия 2.0
 
