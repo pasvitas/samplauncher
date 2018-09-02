@@ -34,6 +34,8 @@
             this.bPath = new System.Windows.Forms.Button();
             this.bDone = new System.Windows.Forms.Button();
             this.bDownloadSamp = new System.Windows.Forms.Button();
+            this.lCopyRight = new System.Windows.Forms.Label();
+            this.cbExitOnStart = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // tbPath
@@ -82,11 +84,35 @@
             this.bDownloadSamp.UseVisualStyleBackColor = true;
             this.bDownloadSamp.Click += new System.EventHandler(this.bDownloadSamp_Click);
             // 
+            // lCopyRight
+            // 
+            this.lCopyRight.AutoSize = true;
+            this.lCopyRight.BackColor = System.Drawing.Color.Transparent;
+            this.lCopyRight.ForeColor = System.Drawing.SystemColors.AppWorkspace;
+            this.lCopyRight.Location = new System.Drawing.Point(191, 13);
+            this.lCopyRight.Name = "lCopyRight";
+            this.lCopyRight.Size = new System.Drawing.Size(60, 13);
+            this.lCopyRight.TabIndex = 5;
+            this.lCopyRight.Text = "by pasvitas";
+            // 
+            // cbExitOnStart
+            // 
+            this.cbExitOnStart.AutoSize = true;
+            this.cbExitOnStart.Location = new System.Drawing.Point(12, 87);
+            this.cbExitOnStart.Name = "cbExitOnStart";
+            this.cbExitOnStart.Size = new System.Drawing.Size(218, 17);
+            this.cbExitOnStart.TabIndex = 6;
+            this.cbExitOnStart.Text = "Закрыть приложение после запуска?";
+            this.cbExitOnStart.UseVisualStyleBackColor = true;
+            this.cbExitOnStart.CheckedChanged += new System.EventHandler(this.cbExitOnStart_CheckedChanged);
+            // 
             // Settings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(266, 92);
+            this.ClientSize = new System.Drawing.Size(266, 116);
+            this.Controls.Add(this.cbExitOnStart);
+            this.Controls.Add(this.lCopyRight);
             this.Controls.Add(this.bDownloadSamp);
             this.Controls.Add(this.bDone);
             this.Controls.Add(this.bPath);
@@ -97,6 +123,7 @@
             this.Name = "Settings";
             this.Text = "Настройки";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Settings_FormClosing);
+            this.Load += new System.EventHandler(this.Settings_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -109,5 +136,7 @@
         private System.Windows.Forms.Button bPath;
         private System.Windows.Forms.Button bDone;
         private System.Windows.Forms.Button bDownloadSamp;
+        private System.Windows.Forms.Label lCopyRight;
+        private System.Windows.Forms.CheckBox cbExitOnStart;
     }
 }

@@ -20,6 +20,12 @@ namespace SAMPLauncher
         {
             InitializeComponent();
             tbPath.Text = ClientInfo.path;
+            cbExitOnStart.Checked = ClientInfo.exitonstart;
+
+            //FIXME: По какой-то причине не работает. C#, спаси
+            bDownloadSamp.Enabled = ServerInfo.allowInstallSamp;
+            if (!ServerInfo.allowInstallSamp) bDownloadSamp.Hide(); 
+
         }
 
         private void bPath_Click(object sender, EventArgs e)
@@ -32,24 +38,42 @@ namespace SAMPLauncher
                 if (ofd.ShowDialog() == DialogResult.OK)
                 {
                     tbPath.Text = Path.GetDirectoryName(ofd.FileName);
-
+                    ClientInfo.path = tbPath.Text;
                 }
             }
         }
 
         private void bDownloadSamp_Click(object sender, EventArgs e)
         {
-            Process.Start(Directory.GetCurrentDirectory() + "/SAMP/install.exe");
+            try
+            {
+                Process.Start(Directory.GetCurrentDirectory() + "/SAMP/install.exe");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void bDone_Click(object sender, EventArgs e)
         {
+            ClientInfo.path = tbPath.Text;
             this.Close();
         }
 
         private void Settings_FormClosing(object sender, FormClosingEventArgs e)
         {
             ClientInfo.path = tbPath.Text;
+        }
+
+        private void cbExitOnStart_CheckedChanged(object sender, EventArgs e)
+        {
+            ClientInfo.exitonstart = cbExitOnStart.Checked;
+        }
+
+        private void Settings_Load(object sender, EventArgs e)
+        {
+            
         }
     }
 }

@@ -128,6 +128,7 @@
     <None Include="Resources\icons8-вконтакте-50.png" />
     <None Include="Resources\globe_filled-100.png" />
     <None Include="Resources\background.jpg" />
+    <None Include="Resources\background.png" />
     <Content Include="samp-3833caf.ico" />
   </ItemGroup>
   <ItemGroup>

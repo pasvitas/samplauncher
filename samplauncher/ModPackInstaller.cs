@@ -18,7 +18,7 @@ namespace SAMPLauncher
         {
             InitializeComponent();
             if (ClientInfo.modpackstatus == 1) lStatus.Text = "Предыдущая установка не завершена";
-            else if (ClientInfo.modpackstatus == 2) lStatus.Text = "Установлено";
+            else if (ClientInfo.modpackstatus == 2) { lStatus.Text = "Установлено"; pbFileProgess.Value = 100; }
         }
 
         private void bInstall_Click(object sender, EventArgs e)
@@ -26,22 +26,21 @@ namespace SAMPLauncher
             if (Directory.Exists(ClientInfo.path))
             {
                 IMG_Archive gta3img = new IMG_Archive(ClientInfo.path + @"/models/gta3.img");
-                MessageBox.Show("Открыто: " + ClientInfo.path + @"/models/gta3.img");
                 string backupDirPath = string.Empty;
                 lStatus.Text = "Установка...";
                 ClientInfo.modpackstatus = 1;
+                pbFileProgess.Value = 0;
                 try
                 {
-                    MessageBox.Show(Directory.GetCurrentDirectory());
                     string[] pathes = Directory.GetFiles(Directory.GetCurrentDirectory() + @"/ModPack");
                     for(int i = 0; i < pathes.Length; i++)
                     {
                         pathes[i] = Path.GetFileName(pathes[i]);
                     }
                     gta3img.Replace(Directory.GetFiles(Directory.GetCurrentDirectory() + @"/ModPack"), pathes, true, backupDirPath, pbFileProgess);
-                    MessageBox.Show("Replaces: " + Directory.GetFiles(Directory.GetCurrentDirectory() + "/ModPack")[0].ToString() + " to " + pathes[0]);
                     ClientInfo.modpackstatus = 2;
                     lStatus.Text = "Установлено";
+                    pbFileProgess.Value = 100;
                 }
                 catch (Exception ex)
                 {
